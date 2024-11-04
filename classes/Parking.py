@@ -22,7 +22,7 @@ class Parking:
         create_table_sql = """
         CREATE TABLE IF NOT EXISTS parking (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            immatriculation VARCHAR 
+            immatriculation VARCHAR UNIQUE
         );
         """
         try:

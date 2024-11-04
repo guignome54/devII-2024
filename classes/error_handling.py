@@ -16,3 +16,4 @@ class DatabaseError(Exception):
         if self.code:
             return f"{self.args[0]} (Code: {self.code})"
         return self.args[0]
+
