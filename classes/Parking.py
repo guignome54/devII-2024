@@ -16,6 +16,8 @@ class Parking:
         PRE : reçoit en entrée une instance de véhicule
         POST : enregistre l'instance et définis si il est parqué
         """
+        
+
 
         return
     
