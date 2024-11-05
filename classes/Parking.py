@@ -21,8 +21,7 @@ class Parking:
         """Crée la table 'parking' si elle n'existe pas encore."""
         create_table_sql = """
         CREATE TABLE IF NOT EXISTS parking (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            immatriculation VARCHAR UNIQUE
+            immatriculation VARCHAR PRIMARY KEY
         );
         """
         try:
