@@ -1,13 +1,12 @@
 class Event:
-
     def __init__(self):
         pass
 
-    def alert(capacity, current_capacity, max_capacity):
-
+    @staticmethod
+    def alert(current_capacity, max_capacity):
         """
-        PRE : reçoit la capacité actuelle du parking 
-        POST : si le parking est remplit à 80% ou 95%, ouvre une fenêtre d'alerte
+        PRE : reçoit la capacité actuelle et maximale du parking
+        POST : si le parking est rempli à 80% ou 95%, affiche une alerte
         """
         if current_capacity >= 0.95 * max_capacity:
             print("Alerte : Le parking est presque plein (95%) !")

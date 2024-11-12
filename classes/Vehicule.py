@@ -7,11 +7,8 @@ class Vehicule:
         self.is_parked = is_parked
         self.entry_time = None
 
-def create_random_vehicule():
-    immatriculation = f"{random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')}-{random.randint(100,999)}-{random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')}"
-    type = random.choice(["voiture", "moto", "camion"])
-    return Vehicule(immatriculation, type)
-
-        
-    
-        
+    @staticmethod
+    def create_random_vehicule():
+        immatriculation = f"{random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')}-{random.randint(100,999)}-{random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')}"
+        type = random.choice(["voiture", "moto", "camion"])
+        return Vehicule(immatriculation, type)

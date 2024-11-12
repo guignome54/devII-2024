@@ -1,24 +1,20 @@
-import Emplacement as emplacement
+from classes.Emplacement import Emplacement
 from datetime import datetime
 
 class Parking:
-
     def __init__(self, capacity, horaires, tarif):
-        self._parking = []
         self.capacity = capacity
         self.horaires = horaires
         self.tarif = tarif
-        self._emplacements = [emplacement.Emplacement(type="regular")]
+        self._parking = []
+        self._emplacements = [Emplacement("regular") for _ in range(capacity)]
         self.payements = []
 
     def vehicules_entry(self, vehicule):
-
         """
         PRE : reçoit en entrée une instance de véhicule
-        POST : enregistre l'instance et définis si il est parqué
+        POST : enregistre l'instance et définit si elle est parquée
         """
-        for place in range(self.capacity) :
-            self._emplacements.append(emplacement.Emplacement("regular"))
         for emplacement in self._emplacements:
             if emplacement.is_available:
                 emplacement.manage_emplacement(vehicule)
@@ -26,9 +22,8 @@ class Parking:
                 self._parking.append(vehicule)
                 return
         print("Pas de places disponibles.")
-    
-    def vehicules_leave(self, vehicule):
 
+    def vehicules_leave(self, vehicule):
         """
         PRE : reçoit en entrée une instance d'un véhicule dans le parking
         POST : l'instance quitte le parking
@@ -45,7 +40,7 @@ class Parking:
     def calculate_tarif(self, duration):
         hours = duration.total_seconds() / 3600
         return self.tarif * hours
-    
+
     def register_payment(self, amount, method="carte"):
         """
         Enregistre un paiement
