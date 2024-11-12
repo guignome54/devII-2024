@@ -1,19 +1,17 @@
+import random
+
 class Vehicule:
-
-    def __init__(self, immatriculation, type, is_parked = False, time = 0):
+    def __init__(self, immatriculation, type, is_parked=False):
         self.immatriculation = immatriculation
-        self.type = type
+        self.type = type  # "voiture", "moto", etc.
         self.is_parked = is_parked
-        self.__time = time
+        self.entry_time = None
 
-    @property
-    def time(self):
-        return self.__time
-    
-    @time.setter
-    def time(self, value):
-        self.__time = value
-        
+def create_random_vehicule():
+    immatriculation = f"{random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')}-{random.randint(100,999)}-{random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')}"
+    type = random.choice(["voiture", "moto", "camion"])
+    return Vehicule(immatriculation, type)
+
         
     
         
