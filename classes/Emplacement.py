@@ -8,8 +8,8 @@ class Emplacement:
 
     def manage_emplacement(self, vehicule):
          """
-         PRE : reçois un véhicule en entrée
-         POST : ajoute ou retire la voiture de l'emplacement
+         PRE : Reçois un véhicule en entrée
+         POST : Ajoute ou retire la voiture de l'emplacement
          """
          if self.is_available:
             self.is_available = False
