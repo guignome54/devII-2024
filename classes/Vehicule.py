@@ -1,11 +1,16 @@
 import random
+from dataclasses import dataclass
+import datetime
 
+@dataclass
 class Vehicule:
-    def __init__(self, immatriculation, type, is_parked=False):
-        self.immatriculation = immatriculation
-        self.type = type  # "voiture", "moto", etc.
-        self.is_parked = is_parked
-        self.entry_time = None
+    """
+    Classe représentant un véhicule.
+    """
+    immatriculation: str
+    type: str  # "voiture", "moto", etc.
+    is_parked: bool = False
+    entry_time: datetime = None
 
     @staticmethod
     def create_random_vehicule():

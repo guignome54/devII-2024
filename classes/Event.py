@@ -1,22 +1,35 @@
+from functools import wraps
+
 class Event:
-    def __init__(self):
-        pass
+    """
+    Classe gérant les alertes et les événements liés au parking.
+    """
+
+    @staticmethod
+    def log_event(func):
+        """
+        Décorateur pour enregistrer les actions dans un log.
+        """
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            print(f"[LOG] {func.__name__} exécutée avec args={args} kwargs={kwargs}")
+            return result
+        return wrapper
 
     @staticmethod
     def alert(current_capacity, max_capacity):
         """
-        PRE : Reçoit la capacité actuelle et maximale du parking
-        POST : Si le parking est rempli à 80% ou 95%, affiche une alerte
+        Affiche des alertes en fonction de la capacité du parking.
         """
         if current_capacity >= 0.95 * max_capacity:
             print("Alerte : Le parking est presque plein (95%) !")
         elif current_capacity >= 0.80 * max_capacity:
             print("Alerte : Le parking est bientôt plein (80%).")
 
-    def change_tarif(self, parking, new_tarif):
+    @staticmethod
+    def find_vehicles_by_type(vehicules, type):
         """
-        PRE : Reçoit le parking et le nouveau tarif
-        POST : Change le tarif actuel du parking
+        Utilise une fonction lambda avec `filter` pour trouver les véhicules d'un type donné.
         """
-        parking.tarif = new_tarif
-        print(f"Le tarif a été mis à jour à {new_tarif}€.")
+        return list(filter(lambda v: v.type == type, vehicules))
