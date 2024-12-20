@@ -15,18 +15,18 @@ if __name__ == "__main__":
         mon_parking.vehicules_entry(new_vehicle)
 
         # Sortie aléatoire
-        if mon_parking._parking and random.choice([True, False]):
-            vehicle_to_leave = random.choice(mon_parking._parking)
+        if mon_parking.parking and random.choice([True, False]):
+            vehicle_to_leave = random.choice(mon_parking.parking)
             mon_parking.vehicules_leave(vehicle_to_leave)
 
         # Alertes
-        Event.alert(len(mon_parking._parking), mon_parking._capacity)
-
+        Event.alert(len(mon_parking.parking), mon_parking._capacity)
+        print(new_vehicle)
         time.sleep(1)  # Pause pour simuler le temps
 
     # Rapport final
     mon_parking.generate_report()
 
     # Recherche de véhicules par type
-    voitures = Event.find_vehicles_by_type(mon_parking._parking, "voiture")
+    voitures = Event.find_vehicles_by_type(mon_parking.parking, "voiture")
     print(f"Voitures stationnées : {[v.immatriculation for v in voitures]}")

@@ -1,5 +1,6 @@
 from functools import wraps
 
+
 class Event:
     """
     Classe gérant les alertes et les événements liés au parking.
@@ -10,11 +11,13 @@ class Event:
         """
         Décorateur pour enregistrer les actions dans un log.
         """
+
         @wraps(func)
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
             print(f"[LOG] {func.__name__} exécutée avec args={args} kwargs={kwargs}")
             return result
+
         return wrapper
 
     @staticmethod

@@ -3,6 +3,7 @@ from datetime import datetime
 from classes.Emplacement import Emplacement
 import random
 
+
 class Parking:
     """
     Classe représentant un parking.
@@ -12,7 +13,7 @@ class Parking:
         self._capacity = capacity
         self._horaires = horaires
         self._tarif = tarif
-        self._parking = []
+        self.parking = []
         self._emplacements = [Emplacement("regular", position=(i, random.randint(0, 9))) for i in range(capacity)]
         self._payements = []
 
@@ -39,7 +40,7 @@ class Parking:
             if emplacement.is_available:
                 emplacement.manage_emplacement(vehicule)
                 vehicule.entry_time = datetime.now()
-                self._parking.append(vehicule)
+                self.parking.append(vehicule)
                 return
         print("Pas de places disponibles.")
 
@@ -47,7 +48,7 @@ class Parking:
         """
         Enregistre la sortie d'un véhicule.
         """
-        if vehicule not in self._parking:
+        if vehicule not in self.parking:
             print("Erreur : Ce véhicule n'est pas dans le parking.")
             return
 
@@ -59,7 +60,7 @@ class Parking:
 
         print(f"Véhicule {vehicule.immatriculation} sorti. Coût : {cost:.2f}€.")
         self.register_payment(cost)
-        self._parking.remove(vehicule)
+        self.parking.remove(vehicule)
 
     def calculate_tarif(self, duration):
         hours = duration.total_seconds() / 3600
@@ -79,7 +80,7 @@ class Parking:
         Utilise `map` pour extraire des données spécifiques.
         """
         print(f"\n--- Rapport de Parking ---")
-        print(f"Véhicules actuellement stationnés : {len(self._parking)}")
+        print(f"Véhicules actuellement stationnés : {len(self.parking)}")
 
         total = sum(map(lambda p: p["amount"], self._payements))
         print(f"Total des paiements : {total:.2f}€")
